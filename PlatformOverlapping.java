@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 class Interval{
     int start;
@@ -32,20 +31,24 @@ public class PlatformOverlapping {
             if(temp.start<=end)
                 end=Math.max(end,temp.end);
             else
+            {
                 output.add(new Interval(start, end));
                 start=temp.start;
                 end=temp.end;
+            }
+                
         }
+        //for adding the last interval
         output.add(new Interval(start, end));
         return output;
     }
     public static void main(String[] args) {
 
         Interval arr[] = new Interval[4];
-        arr[0] = new Interval(1, 4);
-        arr[1] = new Interval(2, 9);
+        arr[0] = new Interval(1, 3);
+        arr[1] = new Interval(2, 5);
         arr[2] = new Interval(2, 4);
-        arr[3] = new Interval(4, 7);
+        arr[3] = new Interval(6, 7);
         ArrayList<Interval> intervalList = new ArrayList<>(Arrays.asList(arr));
 
        ArrayList<Interval> ans= mergeIntervals(intervalList);
